@@ -1,0 +1,29 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph LR;
+	__start__(<p>__start__</p>)
+	validation(validation)
+	standard_approval(standard_approval)
+	legal_review(legal_review)
+	finance_review(finance_review)
+	security_review(security_review)
+	executive_signoff(executive_signoff)
+	legal_review_medium(legal_review_medium)
+	legal_review_high(legal_review_high)
+	__end__(<p>__end__</p>)
+	__start__ --> validation;
+	finance_review --> security_review;
+	legal_review_high --> finance_review;
+	security_review --> executive_signoff;
+	validation -. &nbsp;high_risk&nbsp; .-> legal_review_high;
+	validation -. &nbsp;medium_risk&nbsp; .-> legal_review_medium;
+	validation -. &nbsp;low_risk&nbsp; .-> standard_approval;
+	executive_signoff --> __end__;
+	legal_review_medium --> __end__;
+	standard_approval --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

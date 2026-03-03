@@ -1,0 +1,68 @@
+{
+  "playbook_name": "Healthcare Contract Validation",
+  "version": "1.0",
+  "categories": [
+    {
+      "category_name": "Commercial Validation",
+      "rules": [
+        {
+          "rule_id": "CV1",
+          "description": "Volume commitment clearly defined",
+          "type": "existence_check",
+          "keywords": ["volume", "annual volume", "documents annually"],
+          "risk_score": 5
+        },
+        {
+          "rule_id": "CV2",
+          "description": "Payment cycle within 30-45 days",
+          "type": "threshold_check",
+          "field_pattern": "payment terms",
+          "comparison": "<=",
+          "threshold_value": 45,
+          "risk_score": 5
+        }
+      ]
+    },
+    {
+      "category_name": "Regulatory & Legal Validation",
+      "rules": [
+        {
+          "rule_id": "RL1",
+          "description": "HIPAA compliance clause present",
+          "type": "existence_check",
+          "keywords": ["HIPAA"],
+          "risk_score": 7
+        },
+        {
+          "rule_id": "RL2",
+          "description": "Data retention policy >= 7 years",
+          "type": "threshold_check",
+          "field_pattern": "retention",
+          "comparison": ">=",
+          "threshold_value": 7,
+          "risk_score": 7
+        }
+      ]
+    },
+    {
+      "category_name": "Red Flags",
+      "rules": [
+        {
+          "rule_id": "RF1",
+          "description": "Unlimited liability clause",
+          "type": "prohibited_check",
+          "keywords": ["unlimited liability"],
+          "risk_score": 10
+        },
+        {
+          "rule_id": "RF2",
+          "description": "No breach notification timeline",
+          "type": "prohibited_absence_check",
+          "required_keyword": "breach",
+          "timeline_required": 72,
+          "risk_score": 10
+        }
+      ]
+    }
+  ]
+}

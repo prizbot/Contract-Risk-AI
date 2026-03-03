@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langgraph
+langchain
+langchain-openai
+openai
+pydantic
+python-docx
+pypdf
+streamlit
+python-multipart
+reportlab 
+plotly
